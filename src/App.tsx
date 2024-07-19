@@ -1,13 +1,11 @@
 import "./App.css";
-import Header from "./components/Header";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/router";
 
 function App() {
   return (
-    <div
-      id="app"
-      className="ubuntu-regular container prose flex h-screen w-full flex-col items-start justify-center"
-    >
-      <Header />
+    <div id="app" className="ubuntu-regular container prose">
+      <RouterProvider router={router} />
     </div>
   );
 }
