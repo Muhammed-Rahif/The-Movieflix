@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
-import StartingPage from "../pages/GettingStarted"
+import StartingPage from "../pages/GettingStarted";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
     element: <div>Enjoy</div>,
   },
   {
-    path:"getting-started-page",
-    element: <StartingPage/>,
-  }
+    path: "getting-started",
+    element: <StartingPage />,
+  },
 ]);
