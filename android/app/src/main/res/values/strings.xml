@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">movieflix</string>
+    <string name="title_activity_main">movieflix</string>
+    <string name="package_name">tech.rahif.movieflix</string>
+    <string name="custom_url_scheme">tech.rahif.movieflix</string>
+</resources>
