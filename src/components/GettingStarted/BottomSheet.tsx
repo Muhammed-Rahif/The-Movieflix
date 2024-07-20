@@ -8,11 +8,12 @@ const title = (
     Bring <span className="text-red-500">Free</span> streaming to <br />
     Your Devices
   </>
+ 
 );
 const features = [
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, id.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, id.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, id.",
+  "Unleash a world of limitless entertaiment,watch everything and everywhere",
+  "Unlimited ad-free movies, TV shows, and mobile games.",
+  "MovieFlix Originals, popular Movieflix movies & kid's shows (in English & select Indian languages).",
 ];
 const splideOptions = {
   perPage: 1,
