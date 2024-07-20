@@ -1,3 +1,5 @@
+import { SplideSlide } from "@splidejs/react-splide";
+import { Link } from "react-router-dom";
 export default function BottomSheet() {
   return (
     <div className="absolute bottom-0 left-0 grid w-full place-content-center p-3">
@@ -8,11 +10,18 @@ export default function BottomSheet() {
         </h2>
 
         <p className="mt-0">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
-          id.
+          Unleash a world of limitless entertainment,
+          <br />
+          Watch everything and everywhere.
         </p>
-
-        <button className="btn btn-primary w-full">Get Started</button>
+        <div className="flex justify-center pl-2">
+          <SplideSlide className="hover:text-white"></SplideSlide>
+          <SplideSlide className="hover:text-white"></SplideSlide>
+          <SplideSlide className="hover:text-white "></SplideSlide>
+        </div>
+        <Link to="/">
+          <button className="btn btn-primary w-full">Get Started</button>
+        </Link>
       </div>
     </div>
   );
