@@ -1,4 +1,4 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Options, Splide, SplideSlide } from "@splidejs/react-splide";
 
 import "@splidejs/react-splide/css";
 import "@splidejs/react-splide/css/core";
@@ -15,12 +15,14 @@ const features = [
   "Unlimited ad-free movies, TV shows, and mobile games.",
   "MovieFlix Originals, popular Movieflix movies & kid's shows (in English & select Indian languages).",
 ];
-const splideOptions = {
+const splideOptions: Options = {
   perPage: 1,
   arrows: false,
   classes: {
     pagination: "splide__pagination relative my-1",
   },
+  type: "loop",
+  autoplay: "pause",
 };
 
 export default function BottomSheet() {
@@ -31,7 +33,7 @@ export default function BottomSheet() {
 
         <Splide options={splideOptions} aria-label="Features of Movieflix">
           {features.map((feat) => (
-            <SplideSlide>
+            <SplideSlide data-splide-interval="1000">
               <p className="mt-1">{feat}</p>
             </SplideSlide>
           ))}
