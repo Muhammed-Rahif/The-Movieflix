@@ -41,9 +41,7 @@ export default function BottomSheet() {
         </Splide>
 
         <Link to="/login">
-          <Button color="red" className="w-full">
-            Get Started
-          </Button>
+          <Button className="w-full">Get Started</Button>
         </Link>
       </div>
     </div>

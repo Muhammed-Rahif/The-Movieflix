@@ -1,14 +1,18 @@
-import { useState } from "react";
-import { Button, Input, Typography } from "@material-tailwind/react";
+import { Button, Input } from "@material-tailwind/react";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+type LoginInputs = {
+  username: string;
+  password: string;
+};
 
 export default function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
-    // Handle the login logic here
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginInputs>();
+  const onSubmit: SubmitHandler<LoginInputs> = (data) => console.log(data);
 
   return (
     <div
@@ -20,34 +24,39 @@ export default function Login() {
         <p className="mt-2">Get inside.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex w-full flex-col gap-4"
+      >
         <Input
           size="lg"
           color="white"
           type="text"
           className="grow"
           label="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
           icon={<i className="eva eva-person h-4 w-4 opacity-70" />}
+          {...register("username", { required: true })}
+          error={Boolean(errors.username)}
         />
-        <div>
-          <Input
-            size="lg"
-            color="white"
-            type="password"
-            className="grow"
-            label="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            icon={<i className="eva eva-lock h-4 w-4 opacity-70" />}
-          />
-          <figcaption>
-            <i className="eva eva-info mr-1 h-4 w-4" />
-            Use at least 8 characters, one uppercase, one lowercase and one
-            number.
-          </figcaption>
-        </div>
+
+        <Input
+          size="lg"
+          color="white"
+          type="password"
+          className="grow"
+          label="Password"
+          icon={<i className="eva eva-lock h-4 w-4 opacity-70" />}
+          {...register("password", { required: true })}
+          error={Boolean(errors.password)}
+        />
+
+        <figcaption>
+          <i className="eva eva-info mr-1 h-4 w-4" />
+          Same username and password of your TMDB account. If you don't have a
+          TMDB account, please create one{" "}
+          <a href="https://www.themoviedb.org/signup">from here</a> and then try
+          to login here.
+        </figcaption>
 
         <Button type="submit">Login</Button>
       </form>

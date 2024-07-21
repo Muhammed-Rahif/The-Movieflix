@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Button } from "@material-tailwind/react";
 
 export default function Header() {
   return (
@@ -14,12 +14,8 @@ export default function Header() {
         consequatur soluta natus.
       </p>
       <div className="grid grid-cols-2 gap-2">
-        <Link to="/explore">
-          <button className="btn btn-primary">Explore</button>
-        </Link>
-        <Link to="/enjoy">
-          <button className="btn btn-secondary">Enjoy</button>
-        </Link>
+        <Button>Explore</Button>
+        <Button className="bg-secondary">Enjoy</Button>
       </div>
     </article>
   );
