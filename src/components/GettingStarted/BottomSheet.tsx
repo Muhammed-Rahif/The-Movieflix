@@ -28,13 +28,13 @@ const splideOptions: Options = {
 
 export default function BottomSheet() {
   return (
-    <div className="absolute bottom-0 left-0 grid w-full place-content-center p-3">
-      <div className="w-full min-w-0 rounded-3xl bg-accent p-6 text-center md:max-w-md">
+    <div className="absolute bottom-0 left-0 z-10 grid w-full place-content-center p-3 shadow-sm">
+      <div className="w-full min-w-0 max-w-md rounded-3xl bg-accent p-6 text-center">
         <h2 className="my-0">{title}</h2>
 
         <Splide options={splideOptions} aria-label="Features of Movieflix">
-          {features.map((feat) => (
-            <SplideSlide data-splide-interval="1000">
+          {features.map((feat, i) => (
+            <SplideSlide data-splide-interval="1000" key={i}>
               <p className="mt-1">{feat}</p>
             </SplideSlide>
           ))}

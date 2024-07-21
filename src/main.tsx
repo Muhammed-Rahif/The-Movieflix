@@ -15,8 +15,6 @@ const theme = {
 
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider value={theme}>
-      <App />
-    </ThemeProvider>
+    <ThemeProvider value={theme}>{(<App />) as any}</ThemeProvider>
   </React.StrictMode>,
 );

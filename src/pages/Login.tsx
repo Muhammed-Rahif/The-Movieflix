@@ -1,5 +1,6 @@
 import { Button, Input } from "@material-tailwind/react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import LogoText from "../components/LogoText";
 
 type LoginInputs = {
   username: string;
@@ -20,7 +21,7 @@ export default function Login() {
       className="mx-auto flex h-full w-full max-w-sm flex-col items-center justify-evenly"
     >
       <div className="self-start">
-        <h1 className="mb-0 text-primary">Movieflix</h1>
+        <LogoText />
         <p className="mt-2">Get inside.</p>
       </div>
 
