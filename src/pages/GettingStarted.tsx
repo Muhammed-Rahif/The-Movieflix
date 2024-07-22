@@ -3,12 +3,25 @@ import AnimatedTapes from "../components/GettingStarted/AnimatedTapes";
 import BottomSheet from "../components/GettingStarted/BottomSheet";
 import { useWindowSize } from "@uidotdev/usehooks";
 import LogoText from "../components/LogoText";
+import { useQuery } from "@tanstack/react-query";
+import { getTrendingAll } from "../api/trending";
+import { getImgUrl } from "../api/utils";
 
 export default function GettingStarted() {
   const size = useWindowSize();
   const tapesCount: number = useMemo(
     () => Math.round((size.height ?? window.innerHeight) / 144) - 1,
     [size.height],
+  );
+  const trendingAll = useQuery({
+    queryKey: ["getTrendingAll"],
+    queryFn: () => getTrendingAll(),
+  });
+  const imgUrls = useMemo(
+    () =>
+      trendingAll.data?.results.map((d) => getImgUrl(d.backdrop_path, "w92")) ??
+      [],
+    [trendingAll.data],
   );
 
   return (
@@ -20,8 +33,9 @@ export default function GettingStarted() {
       <div className="absolute left-0 h-full w-screen overflow-hidden">
         {[...Array(tapesCount)].map((_, i) => (
           <AnimatedTapes
-            className="odd:rotate-[5deg] even:-rotate-[5deg] sm:odd:rotate-[4deg] sm:even:-rotate-[4deg] md:odd:rotate-3 md:even:-rotate-3"
+            className="odd:rotate-[5deg] even:-rotate-[5deg] even:-scale-x-100 sm:odd:rotate-[4deg] sm:even:-rotate-[4deg] md:odd:rotate-3 md:even:-rotate-3"
             key={i}
+            imgUrls={imgUrls}
           />
         ))}
       </div>
