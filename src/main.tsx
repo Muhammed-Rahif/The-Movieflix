@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import App from "./App.tsx";
 
 import "./index.css";
+import { BrowserRouter } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -19,10 +20,12 @@ const theme = {
 
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider value={theme}>{(<App />) as any}</ThemeProvider>
+    <BrowserRouter future={{ v7_startTransition: true }}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider value={theme}>{(<App />) as any}</ThemeProvider>
 
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 );

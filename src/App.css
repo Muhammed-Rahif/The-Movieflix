@@ -2,7 +2,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -ms-overflow-style: none; /* Internet Explorer 10+ hide scrollbar  */
+  scrollbar-width: none; /* Firefox hide scrollbar  */
   /* border: 1px solid red !important; */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Safari and Chrome  hide scrollbar */
 }
 
 html,
@@ -10,4 +16,36 @@ body,
 #root,
 #app {
   @apply h-full w-full bg-base-100;
+}
+
+.page {
+  position: absolute;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 300ms,
+    transform 300ms;
+  transition-delay: 0;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 300ms,
+    transform 300ms;
+  transition-delay: 0;
 }
