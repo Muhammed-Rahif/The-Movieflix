@@ -35,7 +35,7 @@ export default function Login() {
           type="text"
           className="grow"
           label="Username"
-          icon={<i className="eva eva-person h-4 w-4 opacity-70" />}
+          icon={<i className="eva eva-person text-xl opacity-70" />}
           {...register("username", { required: true })}
           error={Boolean(errors.username)}
         />
@@ -46,7 +46,7 @@ export default function Login() {
           type="password"
           className="grow"
           label="Password"
-          icon={<i className="eva eva-lock h-4 w-4 opacity-70" />}
+          icon={<i className="eva eva-lock text-xl opacity-70" />}
           {...register("password", { required: true })}
           error={Boolean(errors.password)}
         />

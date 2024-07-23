@@ -19,7 +19,7 @@ body,
 }
 
 .page {
-  position: absolute;
+  position: fixed;
 }
 
 .page-enter {
@@ -31,9 +31,8 @@ body,
   opacity: 1;
   transform: scale(1);
   transition:
-    opacity 300ms,
-    transform 300ms;
-  transition-delay: 0;
+    opacity 0.3s,
+    transform 0.3s;
 }
 
 .page-exit {
@@ -44,8 +43,8 @@ body,
 .page-exit-active {
   opacity: 0;
   transform: scale(0.9);
+  transition-duration: 300s;
   transition:
-    opacity 300ms,
-    transform 300ms;
-  transition-delay: 0;
+    opacity 0.3s,
+    transform 0.3s;
 }

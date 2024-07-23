@@ -1,16 +1,15 @@
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import GettingStarted from "./pages/GettingStarted";
 import Login from "./pages/Login";
 import { useEffect } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import "./App.css";
+import Layout from "./layout/Layout";
 
 function App() {
-  const location = useLocation();
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   useEffect(() => {
     // https://stackoverflow.com/a/69084017/14781260
@@ -24,33 +23,23 @@ function App() {
   }, []);
 
   return (
-    <TransitionGroup component={null}>
-      <CSSTransition key={location.key} classNames="page" timeout={300}>
-        <div
-          id="app"
-          className="ubuntu-regular container prose prose-invert !max-w-full"
-        >
-          <Routes>
-            <Route path="/">
-              <Route
-                index
-                element={
-                  isLoggedIn ? <Home /> : <Navigate to="/getting-started" />
-                }
-              />
-              <Route
-                path="getting-started"
-                element={isLoggedIn ? <Navigate to="/" /> : <GettingStarted />}
-              />
-              <Route
-                path="login"
-                element={isLoggedIn ? <Navigate to="/" /> : <Login />}
-              />
-            </Route>
-          </Routes>
-        </div>
-      </CSSTransition>
-    </TransitionGroup>
+    <Routes>
+      <Route element={<Layout />} path="/">
+        <Route
+          index
+          element={isLoggedIn ? <Home /> : <Navigate to="/getting-started" />}
+        />
+        <Route
+          path="getting-started"
+          element={isLoggedIn ? <Navigate to="/" /> : <GettingStarted />}
+        />
+        <Route
+          path="login"
+          element={isLoggedIn ? <Navigate to="/" /> : <Login />}
+        />
+        <Route path="*" element={<></>} />
+      </Route>
+    </Routes>
   );
 }
 
