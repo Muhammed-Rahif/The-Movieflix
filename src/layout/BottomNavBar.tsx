@@ -28,7 +28,7 @@ export default function BottomNavBar() {
   const location = useLocation();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 flex justify-between gap-2 rounded-b-none rounded-t-3xl bg-accent p-4 pt-5">
+    <div className="fixed bottom-0 left-1/2 right-0 flex max-w-sm -translate-x-1/2 justify-between gap-2 rounded-b-none rounded-t-3xl bg-accent p-4 pt-5">
       {navs.map(({ icon, label, href }, i) => {
         const isActive = location.pathname == href;
 

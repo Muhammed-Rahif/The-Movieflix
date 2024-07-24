@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import GettingStarted from "./pages/GettingStarted";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
 import Layout from "./layout/Layout";
@@ -37,7 +38,8 @@ function App() {
           path="login"
           element={isLoggedIn ? <Navigate to="/" /> : <Login />}
         />
-        <Route path="*" element={<></>} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
+        <Route path="/404" element={<NotFound />} />
       </Route>
     </Routes>
   );
