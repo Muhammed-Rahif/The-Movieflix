@@ -4,9 +4,9 @@ import GettingStarted from "./pages/GettingStarted";
 import Login from "./pages/Login";
 import { useEffect } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
+import Layout from "./layout/Layout";
 
 import "./App.css";
-import Layout from "./layout/Layout";
 
 function App() {
   const isLoggedIn = true;
