@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
 import Layout from "./layout/Layout";
+import Profile from "./pages/Profile";
 
 import "./App.css";
 
@@ -29,6 +30,12 @@ function App() {
         <Route
           index
           element={isLoggedIn ? <Home /> : <Navigate to="/getting-started" />}
+        />
+        <Route
+          path="profile"
+          element={
+            isLoggedIn ? <Profile /> : <Navigate to="/getting-started" />
+          }
         />
         <Route
           path="getting-started"

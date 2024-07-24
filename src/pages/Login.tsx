@@ -38,6 +38,9 @@ export default function Login() {
           icon={<i className="eva eva-person text-xl opacity-70" />}
           {...register("username", { required: true })}
           error={Boolean(errors.username)}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+          crossOrigin={undefined}
         />
 
         <Input
@@ -49,6 +52,9 @@ export default function Login() {
           icon={<i className="eva eva-lock text-xl opacity-70" />}
           {...register("password", { required: true })}
           error={Boolean(errors.password)}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+          crossOrigin={undefined}
         />
 
         <figcaption>
@@ -59,7 +65,14 @@ export default function Login() {
           to login here.
         </figcaption>
 
-        <Button type="submit">Login</Button>
+        <Button
+          type="submit"
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
+          Login
+        </Button>
       </form>
 
       <div className="not-prose p-4 text-center">
