@@ -4,7 +4,6 @@ import GettingStarted from "./pages/GettingStarted";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
-
 import { useEffect } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
 import Layout from "./layout/Layout";
@@ -33,6 +32,12 @@ function App() {
           element={isLoggedIn ? <Home /> : <Navigate to="/getting-started" />}
         />
         <Route
+          path="profile"
+          element={
+            isLoggedIn ? <Profile /> : <Navigate to="/getting-started" />
+          }
+        />
+        <Route
           path="getting-started"
           element={isLoggedIn ? <Navigate to="/" /> : <GettingStarted />}
         />
@@ -40,9 +45,9 @@ function App() {
           path="login"
           element={isLoggedIn ? <Navigate to="/" /> : <Login />}
         />
-        <Route path="*" element={<Navigate to="/404" replace />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/404" element={<NotFound />} />
-        <Route path="/profile" element={<Profile/> } />
+        <Route path="*" element={<Navigate to="/404" replace />} />
       </Route>
     </Routes>
   );

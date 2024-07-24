@@ -14,8 +14,21 @@ export default function Header() {
         consequatur soluta natus.
       </p>
       <div className="grid grid-cols-2 gap-2">
-        <Button>Explore</Button>
-        <Button className="bg-secondary">Enjoy</Button>
+        <Button
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
+          Explore
+        </Button>
+        <Button
+          className="bg-secondary"
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
+          Enjoy
+        </Button>
       </div>
     </article>
   );
