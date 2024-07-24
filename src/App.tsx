@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import { useEffect } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-
+import NotFound from "./pages/NotFound";
 import "./App.css";
 
 function App() {
@@ -47,6 +47,10 @@ function App() {
                 element={isLoggedIn ? <Navigate to="/" /> : <Login />}
               />
             </Route>
+            <Route
+                path="*"
+                element={<NotFound />}
+              />
           </Routes>
         </div>
       </CSSTransition>
