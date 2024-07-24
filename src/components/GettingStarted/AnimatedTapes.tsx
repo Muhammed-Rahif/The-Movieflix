@@ -1,14 +1,13 @@
+import { useWindowSize } from "@uidotdev/usehooks";
 import { useMemo } from "react";
-import { shuffleArray } from "../../utils/utils";
 
-function AnimatedTapes({
-  className,
-  imgUrls,
-}: {
-  className?: string;
-  imgUrls: string[];
-}) {
-  const imgUrlsShuffle = useMemo(() => shuffleArray(imgUrls), [imgUrls]);
+function AnimatedTapes({ className }: { className?: string }) {
+  const size = useWindowSize();
+
+  const cardsCount = useMemo(
+    () => Math.round((size.width ?? window.innerWidth) / 60),
+    [size.width],
+  );
 
   return (
     <div
@@ -16,22 +15,22 @@ function AnimatedTapes({
     >
       <div className="pattern absolute top-0 h-8 w-full bg-[url('assets/rounded-rect.png')] bg-center bg-repeat-x"></div>
 
-      <div className="flex animate-marquee whitespace-nowrap">
-        {imgUrlsShuffle.map((u, i) => (
-          <div
+      <div className="animate-marquee flex whitespace-nowrap">
+        {[...Array(cardsCount)].map((_, i) => (
+          <img
             key={i}
-            style={{ backgroundImage: `url(${u})` }}
-            className="mr-3 h-16 w-16 min-w-16 rounded-xl bg-[#444] bg-cover bg-center bg-no-repeat"
+            src={`https://picsum.photos/80/80?id=${i}`}
+            className="mr-3 h-16 w-16 min-w-16 rounded-xl bg-[#444]"
           />
         ))}
       </div>
 
-      <div className="absolute flex animate-marquee2 whitespace-nowrap">
-        {imgUrlsShuffle.map((u, i) => (
-          <div
+      <div className="animate-marquee2 absolute flex whitespace-nowrap">
+        {[...Array(cardsCount)].map((_, i) => (
+          <img
             key={i}
-            style={{ backgroundImage: `url(${u})` }}
-            className="mr-3 h-16 w-16 min-w-16 rounded-xl bg-[#444] bg-cover bg-center bg-no-repeat"
+            src={`https://picsum.photos/80/80?id=${i}`}
+            className="mr-3 h-16 w-16 min-w-16 rounded-xl bg-[#444]"
           />
         ))}
       </div>

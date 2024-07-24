@@ -24,8 +24,8 @@ export default withMT({
     extend: {
       // https://jackwhiting.co.uk/posts/creating-a-marquee-with-tailwind/
       animation: {
-        marquee: "marquee 36s linear infinite",
-        marquee2: "marquee2 36s linear infinite",
+        marquee: "marquee 10s linear infinite",
+        marquee2: "marquee2 10s linear infinite",
       },
       keyframes: {
         marquee: {
