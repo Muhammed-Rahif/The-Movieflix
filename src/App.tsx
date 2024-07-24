@@ -1,11 +1,15 @@
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routes/routes";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Home from "./pages/Home";
+import GettingStarted from "./pages/GettingStarted";
+import Login from "./pages/Login";
 import { useEffect } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
-
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import NotFound from "./pages/NotFound";
 import "./App.css";
 
 function App() {
+  const location = useLocation();
   const isLoggedIn = false;
 
   useEffect(() => {
@@ -20,12 +24,37 @@ function App() {
   }, []);
 
   return (
-    <div
-      id="app"
-      className="ubuntu-regular container prose prose-invert !max-w-full"
-    >
-      <RouterProvider router={router(isLoggedIn)} />
-    </div>
+    <TransitionGroup component={null}>
+      <CSSTransition key={location.key} classNames="page" timeout={300}>
+        <div
+          id="app"
+          className="ubuntu-regular container prose prose-invert !max-w-full"
+        >
+          <Routes>
+            <Route path="/">
+              <Route
+                index
+                element={
+                  isLoggedIn ? <Home /> : <Navigate to="/getting-started" />
+                }
+              />
+              <Route
+                path="getting-started"
+                element={isLoggedIn ? <Navigate to="/" /> : <GettingStarted />}
+              />
+              <Route
+                path="login"
+                element={isLoggedIn ? <Navigate to="/" /> : <Login />}
+              />
+            </Route>
+            <Route
+                path="*"
+                element={<NotFound />}
+              />
+          </Routes>
+        </div>
+      </CSSTransition>
+    </TransitionGroup>
   );
 }
 
