@@ -13,8 +13,8 @@ const title = (
 );
 const features = [
   "Unleash a world of limitless entertaiment,watch everything and everywhere",
-  "Unlimited ad-free movies, TV shows, and mobile games.",
-  "MovieFlix Originals, popular Movieflix movies & kid's shows (in English & select Indian languages).",
+  "Movieflix Original content production investment in creating high-quality series and movies trailer.",
+  "Multiple Device Access Availabilty on smartphones,tablet,smart TVs etc.",
 ];
 const splideOptions: Options = {
   perPage: 1,

@@ -21,7 +21,7 @@ export default function Layout() {
         </CSSTransition>
       </TransitionGroup>
 
-      {!["/getting-started", "/login"].includes(location.pathname) && (
+      {!["/getting-started", "/login", "/404"].includes(location.pathname) && (
         <BottomNavBar />
       )}
     </>
