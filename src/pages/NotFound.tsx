@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
-    <div className="bg-pattern prose prose-invert flex h-full max-w-none flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center text-center">
+    <div
+      style={{
+        backgroundImage: `url('/images/404.png')`,
+      }}
+      className="prose prose-invert absolute left-0 top-0 flex h-full w-screen max-w-none flex-col items-center justify-center bg-cover bg-no-repeat [text-shadow:0px_0px_10px_rgba(0,0,0,1)] prose-p:text-white"
+    >
+      <div className="relative z-10 flex flex-col items-center justify-center text-center">
         <h1>Lost your way?</h1>
 
         <p className="lead">
@@ -12,13 +17,11 @@ function NotFound() {
           the home page.
         </p>
 
-        <div>
-          <Link to="/">
-            <Button className="bg-white font-semibold text-black">
-              Movieflix Home
-            </Button>
-          </Link>
-        </div>
+        <Link to="/">
+          <Button className="bg-white font-semibold text-black">
+            Movieflix Home
+          </Button>
+        </Link>
       </div>
 
       <p className="border-l-4 border-l-primary px-5 py-2 text-xl font-thin tracking-widest">
