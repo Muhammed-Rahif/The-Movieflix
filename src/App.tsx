@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import GettingStarted from "./pages/GettingStarted";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile";
+
 import { useEffect } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
 import Layout from "./layout/Layout";
@@ -40,6 +42,7 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/404" replace />} />
         <Route path="/404" element={<NotFound />} />
+        <Route path="/profile" element={<Profile/> } />
       </Route>
     </Routes>
   );
