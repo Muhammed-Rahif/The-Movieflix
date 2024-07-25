@@ -41,7 +41,14 @@ export default function BottomSheet() {
         </Splide>
 
         <Link to="/login">
-          <Button className="w-full">Get Started</Button>
+          <Button
+            className="w-full"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
+            Get Started
+          </Button>
         </Link>
       </div>
     </div>

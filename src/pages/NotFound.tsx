@@ -12,13 +12,18 @@ function NotFound() {
       <div className="relative z-10 flex flex-col items-center justify-center text-center">
         <h1>Lost your way?</h1>
 
-        <p className="lead">
+        <p className="lead px-4">
           Sorry, we can't find that page. <br /> You'll find lots to explore on
           the home page.
         </p>
 
         <Link to="/">
-          <Button className="bg-white font-semibold text-black">
+          <Button
+            className="bg-white font-semibold text-black"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
             Movieflix Home
           </Button>
         </Link>

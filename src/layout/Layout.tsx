@@ -2,6 +2,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import BottomNavBar from "./BottomNavBar";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
+const navBarExcludesRoutes = ["/getting-started", "/login", "/404"];
+
 export default function Layout() {
   const location = useLocation();
 
@@ -17,13 +19,16 @@ export default function Layout() {
             className="ubuntu-regular container prose prose-invert !max-w-full"
           >
             <Outlet />
+
+            {/* A free space to exclude the bottom nav bar */}
+            {!navBarExcludesRoutes.includes(location.pathname) && (
+              <div className="block h-[100px]" />
+            )}
           </div>
         </CSSTransition>
       </TransitionGroup>
 
-      {!["/getting-started", "/login", "/404"].includes(location.pathname) && (
-        <BottomNavBar />
-      )}
+      {!navBarExcludesRoutes.includes(location.pathname) && <BottomNavBar />}
     </>
   );
 }
