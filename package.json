@@ -6,7 +6,7 @@
   "homepage": "https://muhammed-rahif.github.io/The-Movieflix/",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build # tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "postinstall": "patch-package",
@@ -35,7 +35,7 @@
     "@capacitor/cli": "^6.1.1",
     "@tailwindcss/typography": "^0.5.13",
     "@tanstack/eslint-plugin-query": "^5.51.12",
-    "@types/react": "^18.3.3",
+    "@types/react": "18.2.9",
     "@types/react-dom": "^18.3.0",
     "@types/react-transition-group": "^4.4.10",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
