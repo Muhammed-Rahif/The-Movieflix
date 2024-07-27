@@ -3,13 +3,12 @@ import { movieData } from "./SampleData";
 
 function Header() {
   return (
-    <div className="screen  w-full">
+    <div className="screen w-full">
       <div className="flex items-center overflow-y-hidden overflow-x-scroll">
         <Carousel
           transition={{ duration: 2 }}
           loop={true}
-          navigation={null} // Remove the dots
-          autoplay={true} // Disable autoplay
+          autoplay={true}
           className="rounded-xl"
         >
           {movieData.map((item, i) => (

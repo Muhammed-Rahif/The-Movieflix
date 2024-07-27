@@ -39,9 +39,6 @@ export default function BottomNavBar() {
               className={`flex items-center justify-between rounded-full duration-300 ${isActive ? "" : "bg-transparent text-white"}`}
               variant={isActive ? "filled" : "text"}
               size="sm"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
             >
               <i className={`eva eva-${icon} text-xl`} />
               <span className={`duration-300 ${isActive ? "w-16" : "w-0"}`}>

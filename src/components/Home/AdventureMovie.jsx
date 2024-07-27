@@ -1,4 +1,3 @@
-import React from "react";
 import { movieData } from "./SampleData";
 function AdventureMovie() {
   return (
