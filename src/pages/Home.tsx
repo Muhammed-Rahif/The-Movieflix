@@ -1,9 +1,14 @@
-import Header from "../components/home/Header";
+import GenresList from '../components/GenresList/GenresList'
+
+
 
 export default function Home() {
   return (
-    <div id="home">
-      <Header />
+    <div id="home" >
+      <GenresList />
+     
+
+      
       
     </div>
   );
