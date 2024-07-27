@@ -1,10 +1,9 @@
-import Header from "../components/home/Header";
+import GenresList from "../components/Home/GenresList";
 
 export default function Home() {
   return (
-    <div id="home">
-      <Header />
-      
+    <div id="home" className="py-6">
+      <GenresList />
     </div>
   );
 }
