@@ -1,4 +1,4 @@
-import GenresList from '../components/GenresList/GenresList'
+import GenresList from '../components/home/GenresList'
 
 
 
