@@ -1,17 +1,19 @@
-import Header from "../components/home/Header";
-import ActionMovies from "../components/home/ActionMovies"
-import AdventureMovie from "../components/home/AdventureMovie"
-import ComedyMovie from "../components/home/ComedyMovie"
-import CrimeMovie from "../components/home/CrimeMovie"
+import Header from "../components/Home/Header";
+import ActionMovies from "../components/Home/ActionMovies";
+import AdventureMovie from "../components/Home/AdventureMovie";
+import ComedyMovie from "../components/Home/ComedyMovie";
+import GenresList from "../components/Home/GenresList";
+import CrimeMovie from "../components/Home/CrimeMovie";
+
 export default function Home() {
   return (
-    <div id="home">
+    <div id="home" className="py-6">
       <Header />
-      <ActionMovies/>
-      <AdventureMovie/>
-      <ComedyMovie/>
-      <CrimeMovie/>
-  
+      <GenresList />
+      <ActionMovies />
+      <AdventureMovie />
+      <ComedyMovie />
+      <CrimeMovie />
     </div>
   );
 }

@@ -24,7 +24,7 @@ createRoot(document.getElementById("root")!).render(
       <QueryClientProvider client={queryClient}>
         <ThemeProvider value={theme}>{(<App />) as any}</ThemeProvider>
 
-        <ReactQueryDevtools buttonPosition="top-right" />
+        {/* <ReactQueryDevtools buttonPosition="top-right" /> */}
       </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>,
