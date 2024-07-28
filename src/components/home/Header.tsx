@@ -1,35 +1,30 @@
-import { Button } from "@material-tailwind/react";
+import { Carousel } from "@material-tailwind/react";
+import { movieData } from "./SampleData";
 
-export default function Header() {
+function Header() {
   return (
-    <article className="flex h-screen w-full flex-col items-start justify-center">
-      <h1 className="text-primary">Movieflix</h1>
-      <h4 className="underline decoration-primary underline-offset-8">
-        An app for movies/series.
-      </h4>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita
-        blanditiis in tempora quos voluptatibus ipsam non obcaecati dicta
-        excepturi quisquam, dolores, vitae unde quis optio, itaque ad
-        consequatur soluta natus.
-      </p>
-      <div className="grid grid-cols-2 gap-2">
-        <Button
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
+    <div className="screen  w-full">
+      <div className="flex items-center overflow-y-hidden overflow-x-scroll">
+        <Carousel
+          transition={{ duration: 2 }}
+          loop={true}
+          navigation={null} // Remove the dots
+          autoplay={true} // Disable autoplay
+          className="rounded-xl"
         >
-          Explore
-        </Button>
-        <Button
-          className="bg-secondary"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          Enjoy
-        </Button>
+          {movieData.map((item, i) => (
+            <div key={i} className="h-80 min-w-96 rounded-xl p-4">
+              <img
+                src={item.img}
+                alt={`Movie ${i}`}
+                className="m-0 h-full w-full rounded-md object-cover object-center"
+              />
+            </div>
+          ))}
+        </Carousel>
       </div>
-    </article>
+    </div>
   );
 }
+
+export default Header;

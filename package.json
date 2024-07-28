@@ -28,6 +28,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
     "react-router-dom": "^6.25.1",
+    "react-slick": "^0.30.2",
     "react-transition-group": "^4.4.5",
     "slick-carousel": "^1.8.1",
     "xior": "^0.5.5"
