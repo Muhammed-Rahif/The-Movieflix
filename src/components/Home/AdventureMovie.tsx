@@ -1,4 +1,5 @@
 import { movieData } from "./SampleData";
+
 function AdventureMovie() {
   return (
     <div>
