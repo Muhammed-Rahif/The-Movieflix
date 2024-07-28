@@ -5,6 +5,8 @@
   -ms-overflow-style: none; /* Internet Explorer 10+ hide scrollbar  */
   scrollbar-width: none; /* Firefox hide scrollbar  */
   /* border: 1px solid red !important; */
+  outline-color: red;
+  border-color: red;
 }
 
 *::-webkit-scrollbar {

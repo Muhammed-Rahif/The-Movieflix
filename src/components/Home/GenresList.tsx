@@ -17,8 +17,8 @@ function GenresList() {
   const [active, setActive] = useState(menu[0].id);
 
   return (
-    <div className="my-4 h-5">
-      <div className="absolute left-0 flex w-screen gap-2 overflow-y-hidden overflow-x-scroll px-4 sm:relative sm:w-full">
+    <div className="mt-3 h-5">
+      <div className="absolute left-0 flex w-screen gap-2 overflow-y-hidden overflow-x-scroll sm:relative sm:w-full">
         {menu.map(({ name, id }) => (
           <p
             key={id}
