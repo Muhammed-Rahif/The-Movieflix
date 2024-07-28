@@ -18,7 +18,7 @@ export default function Login() {
   return (
     <div
       id="login"
-      className="mx-auto flex h-screen w-full max-w-sm flex-col items-center justify-evenly"
+      className="mx-auto flex h-screen w-full max-w-sm flex-col items-center justify-evenly p-4"
     >
       <div className="self-start">
         <LogoText />
