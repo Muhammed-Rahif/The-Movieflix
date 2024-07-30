@@ -19,7 +19,7 @@ function Profile() {
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-center justify-center gap-3">
+      <div className="flex w-full flex-col items-center justify-center gap-3 px-4 xl:px-6">
         <div className="flex w-full items-center justify-between rounded-lg bg-accent py-2">
           <i className="eva eva-globe-2 px-2 text-4xl" />
           <div className="flex flex-auto flex-col">

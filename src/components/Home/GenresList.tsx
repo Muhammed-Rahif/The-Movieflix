@@ -1,3 +1,4 @@
+import { Button } from "@material-tailwind/react";
 import { useState } from "react";
 
 function GenresList() {
@@ -17,15 +18,16 @@ function GenresList() {
   const [active, setActive] = useState(menu[0].id);
 
   return (
-    <div className="-ml-4 flex w-screen gap-2 overflow-y-hidden overflow-x-scroll px-4">
+    <div className="mt-6 flex w-full gap-2 overflow-y-visible overflow-x-scroll px-4 py-2 xl:px-6">
       {menu.map(({ name, id }) => (
-        <p
-          key={id}
-          className={`m-0 flex cursor-pointer items-center border-l-primary px-1 leading-5 duration-300 ${active === id ? "scale-105 border-l-[3px]" : "text-gray-500"}`}
+        <Button
+          size="sm"
+          className={`${active === id ? "bg-primary" : "bg-secondary"} min-w-max`}
           onClick={() => setActive(id)}
+          key={id}
         >
           {name}
-        </p>
+        </Button>
       ))}
     </div>
   );
