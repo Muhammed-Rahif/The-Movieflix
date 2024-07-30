@@ -11,7 +11,7 @@ import Layout from "./layout/Layout";
 import "./App.css";
 
 function App() {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   useEffect(() => {
     // https://stackoverflow.com/a/69084017/14781260
