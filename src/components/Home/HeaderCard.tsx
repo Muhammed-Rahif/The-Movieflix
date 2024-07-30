@@ -6,7 +6,7 @@ export default function HeaderCard() {
       style={{
         backgroundImage: `url('https://picsum.photos/800/600?random${new Date().getTime()}')`,
       }}
-      className="relative h-[50vh] max-w-none items-center justify-end rounded-none bg-secondary bg-cover bg-center bg-no-repeat text-center"
+      className="relative h-full max-w-none items-center justify-end rounded-none bg-secondary bg-cover bg-center bg-no-repeat text-center"
     >
       <CardBody className="prose prose-invert relative z-10 flex flex-col items-center !text-white">
         <img

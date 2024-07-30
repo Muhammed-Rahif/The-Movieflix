@@ -18,7 +18,7 @@ function GenresList() {
   const [active, setActive] = useState(menu[0].id);
 
   return (
-    <div className="mt-6 flex w-full gap-2 overflow-x-scroll px-4 xl:px-6">
+    <div className="mt-6 flex w-full gap-2 overflow-y-visible overflow-x-scroll px-4 py-2 xl:px-6">
       {menu.map(({ name, id }) => (
         <Button
           size="sm"
