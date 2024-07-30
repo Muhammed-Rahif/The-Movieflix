@@ -16,7 +16,7 @@ export default function Layout() {
         <CSSTransition key={location.key} classNames="page" timeout={300}>
           <div
             id="app"
-            className="ubuntu-regular container prose prose-invert !max-w-full"
+            className="ubuntu-regular container prose prose-invert max-w-full [@media(width>=2200px)]:container [@media(width>=2200px)]:mx-auto"
           >
             <Outlet />
 
