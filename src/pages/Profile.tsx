@@ -1,7 +1,11 @@
+import { useAtom } from "jotai";
 import avatarImg from "../assets/profileAvatar.jpg";
 import { Button, Switch } from "@material-tailwind/react";
+import { tmdbSessionIdAtom } from "../states/auth";
 
 function Profile() {
+  const [, setSessionId] = useAtom(tmdbSessionIdAtom);
+
   return (
     <div
       id="profile"
@@ -98,6 +102,7 @@ function Profile() {
       <Button
         color="black"
         className="flex items-center gap-1 rounded-md bg-black p-2 font-bold"
+        onClick={() => setSessionId(null)}
       >
         <i className="eva eva-log-out text-xl" />
         Logout

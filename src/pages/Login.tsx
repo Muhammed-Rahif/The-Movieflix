@@ -9,19 +9,22 @@ import {
 import { SubmitHandler, useForm } from "react-hook-form";
 import LogoText from "../components/LogoText";
 import { Authentication, LoginUserData } from "../api/authentication";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
-import SecureLS from "secure-ls";
-import { AppKeys } from "../constants/keys";
+import { useAtom } from "jotai";
+import { tmdbSessionIdAtom } from "../states/auth";
 
 type LoginInputs = {
   username: string;
   password: string;
 };
+const getRequestTokenKey = "getRequestToken";
 
 export default function Login() {
+  const queryClient = useQueryClient();
+  const [, setSessionId] = useAtom(tmdbSessionIdAtom);
   const requestToken = useQuery({
-    queryKey: ["getRequestToken"],
+    queryKey: [getRequestTokenKey],
     queryFn: Authentication.getRequestToken,
     refetchInterval: 1000 * 60 * 60, // 1 hour
     staleTime: 1000 * 60 * 60, // 1 hour
@@ -49,11 +52,8 @@ export default function Login() {
     const loginData = await login.mutateAsync(data);
     const session = await createSession.mutateAsync(loginData.request_token);
 
-    if (session.success) {
-      const ls = new SecureLS();
-      ls.set(AppKeys.USER_SESSION_KEY, session.session_id);
-      console.log(ls.get(AppKeys.USER_SESSION_KEY));
-    }
+    if (session.success) setSessionId(session.session_id);
+    await queryClient.invalidateQueries({ queryKey: [getRequestTokenKey] });
   };
   const resetErrors = useCallback(() => {
     login.reset();

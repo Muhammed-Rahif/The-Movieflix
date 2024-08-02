@@ -4,14 +4,17 @@ import GettingStarted from "./pages/GettingStarted";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
 import Layout from "./layout/Layout";
 
 import "./App.css";
+import { useAtom } from "jotai";
+import { tmdbSessionIdAtom } from "./states/auth";
 
 function App() {
-  const isLoggedIn = false;
+  const [sessionId] = useAtom(tmdbSessionIdAtom);
+  const isLoggedIn = useMemo(() => typeof sessionId == "string", [sessionId]);
 
   useEffect(() => {
     // https://stackoverflow.com/a/69084017/14781260
