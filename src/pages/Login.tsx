@@ -1,11 +1,5 @@
-import {
-  Button,
-  Dialog,
-  DialogBody,
-  DialogFooter,
-  DialogHeader,
-  Input,
-} from "@material-tailwind/react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Alert, Button, Input } from "@material-tailwind/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import LogoText from "../components/LogoText";
 import { Authentication, LoginUserData } from "../api/authentication";
@@ -18,7 +12,7 @@ type LoginInputs = {
   username: string;
   password: string;
 };
-const getRequestTokenKey = "getRequestToken";
+const getRequestTokenKey = "Authentication.getRequestToken";
 
 export default function Login() {
   const queryClient = useQueryClient();
@@ -58,7 +52,7 @@ export default function Login() {
   const resetErrors = useCallback(() => {
     login.reset();
     createSession.reset();
-  }, []);
+  }, [createSession, login]);
 
   return (
     <div
@@ -74,6 +68,23 @@ export default function Login() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex w-full flex-col gap-4"
       >
+        <Alert
+          open={login.isError || createSession.isError}
+          onClose={resetErrors}
+          variant="outlined"
+          color="red"
+          className="overflow-hidden duration-300"
+          animate={{
+            mount: { maxHeight: "12rem" },
+            unmount: { maxHeight: "0rem" },
+          }}
+        >
+          <figcaption className="m-0">
+            {(login.error as any)?.response.data.status_message ||
+              (createSession.error as any)?.response.data.status_message}
+          </figcaption>
+        </Alert>
+
         <Input
           size="lg"
           color="white"
@@ -101,8 +112,10 @@ export default function Login() {
           <i className="eva eva-info mr-1 h-4 w-4" />
           Same username and password of your TMDB account. If you don't have a
           TMDB account, please create one{" "}
-          <a href="https://www.themoviedb.org/signup">from here</a> and then try
-          to login here.
+          <a href="https://www.themoviedb.org/signup" target="_blank">
+            from here
+          </a>{" "}
+          and then try to login here.
         </figcaption>
 
         <Button
@@ -127,26 +140,6 @@ export default function Login() {
           />
         </a>
       </div>
-
-      <Dialog
-        open={login.isError || createSession.isError}
-        size="xs"
-        handler={resetErrors}
-        className="bg-base-100"
-      >
-        <DialogHeader className="text-white">Oops!</DialogHeader>
-        <DialogBody className="text-white">
-          <span>
-            {(login.error as any)?.response.data.status_message ||
-              (createSession.error as any)?.response.data.status_message}
-          </span>
-        </DialogBody>
-        <DialogFooter>
-          <Button onClick={resetErrors} className="bg-green-500">
-            <span>Ok</span>
-          </Button>
-        </DialogFooter>
-      </Dialog>
     </div>
   );
 }

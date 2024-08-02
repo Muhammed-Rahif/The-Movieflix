@@ -7,7 +7,8 @@ import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persist
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
-
+import { Provider } from "jotai";
+import { store } from "./states/storage.ts";
 import "./index.css";
 
 const queryClient = new QueryClient();
@@ -31,9 +32,11 @@ createRoot(document.getElementById("root")!).render(
         client={queryClient}
         persistOptions={{ persister }}
       >
-        <ThemeProvider value={theme}>{(<App />) as any}</ThemeProvider>
+        <Provider store={store}>
+          <ThemeProvider value={theme}>{(<App />) as never}</ThemeProvider>
 
-        <ReactQueryDevtools buttonPosition="top-right" />
+          <ReactQueryDevtools buttonPosition="top-right" />
+        </Provider>
       </PersistQueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>,
