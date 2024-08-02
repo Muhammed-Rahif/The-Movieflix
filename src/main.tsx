@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { ButtonStyleTypes, ThemeProvider } from "@material-tailwind/react";
+import { ThemeProvider } from "@material-tailwind/react";
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
@@ -10,16 +10,9 @@ import App from "./App.tsx";
 import { Provider } from "jotai";
 import { store } from "./states/storage.ts";
 import "./index.css";
+import { theme } from "./theme.ts";
 
 const queryClient = new QueryClient();
-
-const theme = {
-  button: {
-    defaultProps: {
-      className: "bg-primary",
-    },
-  } as ButtonStyleTypes,
-};
 
 const persister = createSyncStoragePersister({
   storage: window.localStorage,

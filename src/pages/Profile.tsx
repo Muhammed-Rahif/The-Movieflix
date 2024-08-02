@@ -1,5 +1,12 @@
 import { useAtom } from "jotai";
-import { Button, Switch } from "@material-tailwind/react";
+import {
+  Button,
+  List,
+  ListItem,
+  ListItemPrefix,
+  ListItemSuffix,
+  Switch,
+} from "@material-tailwind/react";
 import { tmdbSessionIdAtom } from "../states/auth";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Account } from "../api/account";
@@ -47,7 +54,7 @@ function Profile() {
           <i className="eva eva-plus-square absolute -bottom-6 -right-3 text-3xl opacity-70" />
         </div>
 
-        <div className="rounded-md bg-accent p-2 pt-0">
+        <div className="min-h-10 rounded-md bg-accent p-2 pt-0">
           <p className="m-0 font-semibold">{displayName}</p>
           <figcaption className="m-0 text-xs">
             {accountDetails?.username}
@@ -55,30 +62,71 @@ function Profile() {
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-center justify-center gap-3 px-4 xl:px-6">
-        <div className="flex w-full items-center justify-between rounded-lg bg-accent py-2">
-          <i className="eva eva-globe-2 px-2 text-4xl" />
+      <List className="flex w-full flex-col items-center justify-center gap-3 px-4 xl:px-6">
+        <ListItem
+          ripple={false}
+          className="flex w-full items-center justify-between rounded-lg"
+        >
+          <ListItemPrefix>
+            <i className="eva eva-play-circle-outline text-3xl" />
+          </ListItemPrefix>
           <div className="flex flex-auto flex-col">
-            <h4 className="m-0">Display Language</h4>
+            <h4 className="m-0">Autoplay</h4>
             <p className="m-0">
-              Change the language of the text you see on Netflix across all
-              devices.
+              Automatically play the video/trailer right after opening the
+              details page.
             </p>
-          </div>
-          <i className="eva eva-arrow-ios-forward px-1 text-3xl" />
-        </div>
-
-        <div className="flex w-full items-center justify-between rounded-lg bg-accent py-2">
-          <i className="eva eva-play-circle px-2 text-4xl" />
-          <div className="flex flex-auto flex-col">
-            <h4 className="m-0">Autoplay next episode</h4>
-            <p className="m-0">On all devices</p>
           </div>
           <div className="mr-3">
             <Switch color="blue" defaultChecked crossOrigin={undefined} />
           </div>
-        </div>
-      </div>
+        </ListItem>
+
+        <ListItem className="flex w-full items-center justify-between rounded-lg">
+          <ListItemPrefix>
+            <i className="eva eva-heart-outline text-3xl" />
+          </ListItemPrefix>
+          <div className="flex flex-auto flex-col">
+            <h4 className="m-0">Favorites</h4>
+            <p className="m-0">
+              The movies and TV shows you loved will be saved here.
+            </p>
+          </div>
+          <ListItemSuffix>
+            <i className="eva eva-arrow-ios-forward px-1 text-3xl" />
+          </ListItemSuffix>
+        </ListItem>
+
+        <ListItem className="flex w-full items-center justify-between rounded-lg">
+          <ListItemPrefix>
+            <i className="eva eva-bookmark-outline text-3xl" />
+          </ListItemPrefix>
+          <div className="flex flex-auto flex-col">
+            <h4 className="m-0">Watchlist</h4>
+            <p className="m-0">
+              Add movies and TV shows to your watchlist to watch them later.
+            </p>
+          </div>
+          <ListItemSuffix>
+            <i className="eva eva-arrow-ios-forward px-1 text-3xl" />
+          </ListItemSuffix>
+        </ListItem>
+
+        <ListItem className="flex w-full items-center justify-between rounded-lg">
+          <ListItemPrefix>
+            <i className="eva eva-star-outline text-3xl" />
+          </ListItemPrefix>
+          <div className="flex flex-auto flex-col">
+            <h4 className="m-0">Ratings</h4>
+            <p className="m-0">
+              The movies and TV shows you rated will be shown here.
+            </p>
+          </div>
+          <ListItemSuffix>
+            <i className="eva eva-arrow-ios-forward px-1 text-3xl" />
+          </ListItemSuffix>
+        </ListItem>
+      </List>
 
       <Button
         color="black"
