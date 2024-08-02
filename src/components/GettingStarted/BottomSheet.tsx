@@ -24,7 +24,7 @@ export default function BottomSheet() {
           aria-label="Features of Movieflix"
           prevArrow={() => <></>}
           nextArrow={() => <></>}
-          className="h-auto"
+          className="h-auto pb-3"
           navigation={({ setActiveIndex, activeIndex, length }) => (
             <div className="absolute bottom-3 left-2/4 z-50 flex -translate-x-2/4 gap-2">
               {new Array(length).fill("").map((_, i) => (

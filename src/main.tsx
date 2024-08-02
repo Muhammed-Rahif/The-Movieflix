@@ -1,8 +1,10 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { ButtonStyleTypes, ThemeProvider } from "@material-tailwind/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient } from "@tanstack/react-query";
+import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 
@@ -18,14 +20,21 @@ const theme = {
   } as ButtonStyleTypes,
 };
 
+const persister = createSyncStoragePersister({
+  storage: window.localStorage,
+});
+
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter basename="/">
-      <QueryClientProvider client={queryClient}>
+      <PersistQueryClientProvider
+        client={queryClient}
+        persistOptions={{ persister }}
+      >
         <ThemeProvider value={theme}>{(<App />) as any}</ThemeProvider>
 
-        {/* <ReactQueryDevtools buttonPosition="top-right" /> */}
-      </QueryClientProvider>
+        <ReactQueryDevtools buttonPosition="top-right" />
+      </PersistQueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );

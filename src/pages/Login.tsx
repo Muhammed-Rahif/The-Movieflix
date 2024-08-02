@@ -1,19 +1,64 @@
-import { Button, Input } from "@material-tailwind/react";
+import {
+  Button,
+  Dialog,
+  DialogBody,
+  DialogFooter,
+  DialogHeader,
+  Input,
+} from "@material-tailwind/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import LogoText from "../components/LogoText";
+import { Authentication, LoginUserData } from "../api/authentication";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useCallback } from "react";
+import { useAtom } from "jotai";
+import { tmdbSessionIdAtom } from "../states/auth";
 
 type LoginInputs = {
   username: string;
   password: string;
 };
+const getRequestTokenKey = "getRequestToken";
 
 export default function Login() {
+  const queryClient = useQueryClient();
+  const [, setSessionId] = useAtom(tmdbSessionIdAtom);
+  const requestToken = useQuery({
+    queryKey: [getRequestTokenKey],
+    queryFn: Authentication.getRequestToken,
+    refetchInterval: 1000 * 60 * 60, // 1 hour
+    staleTime: 1000 * 60 * 60, // 1 hour
+  });
+  const login = useMutation({
+    mutationFn: Authentication.loginUser,
+  });
+  const createSession = useMutation({
+    mutationFn: Authentication.createSession,
+  });
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginInputs>();
-  const onSubmit: SubmitHandler<LoginInputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<LoginInputs> = async ({
+    password,
+    username,
+  }) => {
+    const data: LoginUserData = {
+      password,
+      username,
+      request_token: requestToken.data!.request_token,
+    };
+    const loginData = await login.mutateAsync(data);
+    const session = await createSession.mutateAsync(loginData.request_token);
+
+    if (session.success) setSessionId(session.session_id);
+    await queryClient.invalidateQueries({ queryKey: [getRequestTokenKey] });
+  };
+  const resetErrors = useCallback(() => {
+    login.reset();
+    createSession.reset();
+  }, []);
 
   return (
     <div
@@ -38,6 +83,7 @@ export default function Login() {
           icon={<i className="eva eva-person text-xl opacity-70" />}
           {...register("username", { required: true })}
           error={Boolean(errors.username)}
+          autoComplete="off"
         />
 
         <Input
@@ -59,7 +105,16 @@ export default function Login() {
           to login here.
         </figcaption>
 
-        <Button type="submit">Login</Button>
+        <Button
+          type="submit"
+          loading={
+            createSession.isPending || login.isPending || requestToken.isPending
+          }
+          fullWidth
+          className="flex items-center justify-center"
+        >
+          Login
+        </Button>
       </form>
 
       <div className="not-prose p-4 text-center">
@@ -72,6 +127,26 @@ export default function Login() {
           />
         </a>
       </div>
+
+      <Dialog
+        open={login.isError || createSession.isError}
+        size="xs"
+        handler={resetErrors}
+        className="bg-base-100"
+      >
+        <DialogHeader className="text-white">Oops!</DialogHeader>
+        <DialogBody className="text-white">
+          <span>
+            {(login.error as any)?.response.data.status_message ||
+              (createSession.error as any)?.response.data.status_message}
+          </span>
+        </DialogBody>
+        <DialogFooter>
+          <Button onClick={resetErrors} className="bg-green-500">
+            <span>Ok</span>
+          </Button>
+        </DialogFooter>
+      </Dialog>
     </div>
   );
 }

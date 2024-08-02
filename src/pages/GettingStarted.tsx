@@ -4,7 +4,7 @@ import BottomSheet from "../components/GettingStarted/BottomSheet";
 import { useWindowSize } from "@uidotdev/usehooks";
 import LogoText from "../components/LogoText";
 import { useQuery } from "@tanstack/react-query";
-import { getTrendingAll } from "../api/trending";
+import { Trending } from "../api/trending";
 import { getImgUrl } from "../api/utils";
 
 export default function GettingStarted() {
@@ -14,8 +14,8 @@ export default function GettingStarted() {
     [size.height],
   );
   const trendingAll = useQuery({
-    queryKey: ["getTrendingAll"],
-    queryFn: () => getTrendingAll(),
+    queryKey: ["Trending.getAll"],
+    queryFn: () => Trending.getAll(),
   });
   const imgUrls = useMemo(
     () =>
