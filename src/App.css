@@ -15,6 +15,10 @@
   display: none; /* Safari and Chrome  hide scrollbar */
 }
 
+*::selection {
+  @apply bg-black text-white;
+}
+
 html,
 body {
   @apply bg-base-100;

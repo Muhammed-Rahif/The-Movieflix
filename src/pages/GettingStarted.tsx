@@ -13,15 +13,14 @@ export default function GettingStarted() {
     () => Math.round((size.height ?? window.innerHeight) / 144) - 1,
     [size.height],
   );
-  const trendingAll = useQuery({
+  const { data: trendingAll } = useQuery({
     queryKey: ["Trending.getAll"],
     queryFn: () => Trending.getAll(),
   });
   const imgUrls = useMemo(
     () =>
-      trendingAll.data?.results.map((d) => getImgUrl(d.backdrop_path, "w92")) ??
-      [],
-    [trendingAll.data],
+      trendingAll?.results.map((d) => getImgUrl(d.backdrop_path, "w92")) ?? [],
+    [trendingAll],
   );
 
   return (

@@ -1,3 +1,5 @@
+import { tmdbSessionIdAtom } from "../states/auth";
+import { store } from "../states/storage";
 import { xiorInstance } from "./api";
 import {
   CreateSessionResponse,
@@ -30,6 +32,16 @@ export class Authentication {
     const url = `/authentication/session/new`;
     const res = await xiorInstance.post<CreateSessionResponse>(url, {
       request_token,
+    });
+    return res.data;
+  }
+
+  // https://developer.themoviedb.org/reference/authentication-delete-session
+  public static async deleteSession() {
+    const session_id = store.get(tmdbSessionIdAtom);
+    const url = `/authentication/session`;
+    const res = await xiorInstance.delete<{ success: boolean }>(url, {
+      data: { session_id },
     });
     return res.data;
   }
