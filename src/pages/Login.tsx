@@ -5,7 +5,7 @@ import LogoText from "../components/LogoText";
 import { Authentication, LoginUserData } from "../api/authentication";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
-import { useAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import { tmdbSessionIdAtom } from "../states/auth";
 
 type LoginInputs = {
@@ -16,7 +16,7 @@ const getRequestTokenKey = "Authentication.getRequestToken";
 
 export default function Login() {
   const queryClient = useQueryClient();
-  const [, setSessionId] = useAtom(tmdbSessionIdAtom);
+  const setSessionId = useSetAtom(tmdbSessionIdAtom);
   const requestToken = useQuery({
     queryKey: [getRequestTokenKey],
     queryFn: Authentication.getRequestToken,

@@ -1,4 +1,4 @@
-import { useAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import {
   Button,
   List,
@@ -14,7 +14,7 @@ import { useCallback, useMemo } from "react";
 import { Authentication } from "../api/authentication";
 
 function Profile() {
-  const [, setSessionId] = useAtom(tmdbSessionIdAtom);
+  const setSessionId = useSetAtom(tmdbSessionIdAtom);
   const { data: accountDetails } = useQuery({
     queryKey: ["Account.getAccountDetails"],
     queryFn: () => Account.getAccountDetails(),

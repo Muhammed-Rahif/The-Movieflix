@@ -9,11 +9,11 @@ import { App as CapacitorApp } from "@capacitor/app";
 import Layout from "./layout/Layout";
 
 import "./App.css";
-import { useAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { tmdbSessionIdAtom } from "./states/auth";
 
 function App() {
-  const [sessionId] = useAtom(tmdbSessionIdAtom);
+  const sessionId = useAtomValue(tmdbSessionIdAtom);
   const isLoggedIn = useMemo(() => typeof sessionId == "string", [sessionId]);
 
   useEffect(() => {

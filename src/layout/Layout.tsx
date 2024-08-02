@@ -1,11 +1,14 @@
 import { Outlet, useLocation } from "react-router-dom";
 import BottomNavBar from "./BottomNavBar";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-
-const navBarExcludesRoutes = ["/getting-started", "/login", "/404"];
+import { useMemo } from "react";
+import { tmdbSessionIdAtom } from "../states/auth";
+import { useAtomValue } from "jotai";
 
 export default function Layout() {
   const location = useLocation();
+  const sessionId = useAtomValue(tmdbSessionIdAtom);
+  const isLoggedIn = useMemo(() => typeof sessionId == "string", [sessionId]);
 
   return (
     <>
@@ -21,14 +24,12 @@ export default function Layout() {
             <Outlet />
 
             {/* A free space to exclude the bottom nav bar */}
-            {!navBarExcludesRoutes.includes(location.pathname) && (
-              <div className="block h-[100px]" />
-            )}
+            {isLoggedIn && <div className="block h-[100px]" />}
           </div>
         </CSSTransition>
       </TransitionGroup>
 
-      {!navBarExcludesRoutes.includes(location.pathname) && <BottomNavBar />}
+      {isLoggedIn && <BottomNavBar />}
     </>
   );
 }
