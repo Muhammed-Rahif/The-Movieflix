@@ -5,7 +5,7 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import LogoText from "../components/LogoText";
 import { useQuery } from "@tanstack/react-query";
 import { Trending } from "../api/trending";
-import { getImgUrl } from "../api/utils";
+import { Utils } from "../api/utils";
 
 export default function GettingStarted() {
   const size = useWindowSize();
@@ -19,7 +19,9 @@ export default function GettingStarted() {
   });
   const imgUrls = useMemo(
     () =>
-      trendingAll?.results.map((d) => getImgUrl(d.backdrop_path, "w92")) ?? [],
+      trendingAll?.results.map((d) =>
+        Utils.getImgUrl(d.backdrop_path, "w92"),
+      ) ?? [],
     [trendingAll],
   );
 

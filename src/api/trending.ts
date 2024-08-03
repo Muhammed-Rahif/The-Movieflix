@@ -11,7 +11,7 @@ export class Trending {
   }: {
     timeWindow?: TimeWindow;
     page?: number;
-  } = {}): Promise<GetTrendingAllResponse> {
+  } = {}) {
     const url = `/trending/all/${timeWindow}?language=en-US&page=${page}`;
     const res = await xiorInstance.get<GetTrendingAllResponse>(url);
     return res.data;

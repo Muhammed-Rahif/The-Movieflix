@@ -1,16 +1,16 @@
 import Header from "../components/Home/Header";
-import CardsList from "../components/Home/CardsList";
+import TrendingList from "../components/Home/TrendingList";
 import GenresList from "../components/Home/GenresList";
 
 export default function Home() {
   return (
-    <div id="home" className="flex flex-col gap-3 pb-6">
+    <div id="home" className="flex flex-col gap-5 pb-6">
       <Header />
       <GenresList />
-      <CardsList title="Action" />
-      <CardsList title="Adventure" />
-      <CardsList title="Trending" />
-      <CardsList title="Horror" />
+      <TrendingList />
+      <TrendingList />
+      <TrendingList />
+      <TrendingList />
     </div>
   );
 }

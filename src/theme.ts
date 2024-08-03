@@ -3,7 +3,21 @@ import { ButtonStyleTypes, ListStylesType } from "@material-tailwind/react";
 export const theme = {
   button: {
     defaultProps: {
-      className: "bg-primary",
+      color: "red",
+    },
+    styles: {
+      variants: {
+        filled: {
+          gray: {
+            background: "bg-accent",
+            color: "text-white-900",
+            shadow: "shadow-md shadow-white-500/10",
+            hover: "hover:shadow-lg hover:shadow-white-500/20",
+            focus: "focus:opacity-[0.85] focus:shadow-none",
+            active: "active:opacity-[0.85] active:shadow-none",
+          },
+        },
+      },
     },
   } as ButtonStyleTypes,
   list: {

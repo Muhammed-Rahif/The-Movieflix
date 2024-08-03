@@ -1,11 +1,7 @@
 import { IconButton } from "@material-tailwind/react";
 import { useCallback, useRef } from "react";
 
-type Props = {
-  title: string;
-};
-
-export default function CardsList({ title }: Props) {
+export default function TrendingList() {
   const scrollableRef = useRef<HTMLDivElement>(null);
   const scrollBy = useCallback(
     (to: "left" | "right") => {
@@ -18,8 +14,11 @@ export default function CardsList({ title }: Props) {
   );
 
   return (
-    <div className="prose prose-invert relative max-w-none overflow-visible">
-      <h3 className="relative mx-4 my-1 font-medium xl:mx-6">{title}</h3>
+    <div className="relative max-w-none overflow-visible">
+      <div className="prose prose-invert mx-4 mb-2 xl:mx-6">
+        <h3 className="relative m-0 mb-1 font-medium leading-4">Trending</h3>
+        <figcaption className="leading-4">Movies</figcaption>
+      </div>
 
       <div
         ref={scrollableRef}
@@ -28,9 +27,9 @@ export default function CardsList({ title }: Props) {
         {[...Array(12)].map((_, i) => (
           <div
             key={i}
-            className="aspect-3/4 min-w-28 cursor-pointer overflow-clip rounded-xl border-2 border-transparent bg-accent bg-cover bg-center bg-no-repeat duration-200 hover:border-primary active:scale-95 active:border-primary sm:min-w-32 md:aspect-video md:min-w-52 lg:min-w-56 xl:min-w-60 2xl:max-w-80"
+            className="aspect-3/4 h-40 cursor-pointer overflow-clip rounded-xl border-2 border-transparent bg-accent bg-cover bg-center bg-no-repeat duration-300 hover:aspect-video hover:border-primary active:scale-95 active:border-primary md:h-44 lg:h-48"
             style={{
-              backgroundImage: `url('https://picsum.photos/300/200?id=${i}')`,
+              backgroundImage: `url('https://image.tmdb.org/t/p/original/vchDkX1DtqTy3bIDJ7YqmSbX965.jpg')`,
             }}
           ></div>
         ))}

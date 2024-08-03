@@ -41,6 +41,10 @@ function App() {
           }
         />
         <Route
+          path="/profile"
+          element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
+        />
+        <Route
           path="getting-started"
           element={isLoggedIn ? <Navigate to="/" /> : <GettingStarted />}
         />
@@ -48,7 +52,6 @@ function App() {
           path="login"
           element={isLoggedIn ? <Navigate to="/" /> : <Login />}
         />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Route>
