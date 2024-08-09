@@ -12,6 +12,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { Account } from "../api/account";
 import { useCallback, useMemo } from "react";
 import { Authentication } from "../api/authentication";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const setSessionId = useSetAtom(tmdbSessionIdAtom);
@@ -101,12 +102,14 @@ function Profile() {
           <ListItemPrefix>
             <i className="eva eva-bookmark-outline text-3xl" />
           </ListItemPrefix>
+       
           <div className="flex flex-auto flex-col">
             <h4 className="m-0">Watchlist</h4>
             <p className="m-0">
               Add movies and TV shows to your watchlist to watch them later.
             </p>
           </div>
+          
           <ListItemSuffix>
             <i className="eva eva-arrow-ios-forward px-1 text-3xl" />
           </ListItemSuffix>
