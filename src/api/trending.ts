@@ -1,12 +1,10 @@
 import { xiorInstance } from "./api";
-import type { GetTrendingAllResponse } from "./trending.d";
-
-type TimeWindow = "day" | "week";
+import { GetTrendingAllResponse, TimeWindow } from "./trending.d";
 
 export class Trending {
   // https://developer.themoviedb.org/reference/trending-all
   public static async getAll({
-    timeWindow = "day",
+    timeWindow = TimeWindow.Day,
     page = 1,
   }: {
     timeWindow?: TimeWindow;

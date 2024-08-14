@@ -4,7 +4,7 @@ import GenresList from "../components/Home/GenresList";
 
 export default function Home() {
   return (
-    <div id="home" className="flex flex-col gap-5 pb-6">
+    <div id="home" className="flex flex-col gap-1 pb-6">
       <Header />
       <GenresList />
       <TrendingList />

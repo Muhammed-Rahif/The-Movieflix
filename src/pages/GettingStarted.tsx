@@ -19,9 +19,7 @@ export default function GettingStarted() {
   });
   const imgUrls = useMemo(
     () =>
-      trendingAll?.results.map((d) =>
-        Utils.getImgUrl(d.backdrop_path, "w92"),
-      ) ?? [],
+      trendingAll?.results.map((d) => Utils.getImgUrl(d.backdrop_path)) ?? [],
     [trendingAll],
   );
 

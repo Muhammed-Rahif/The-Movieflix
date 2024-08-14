@@ -41,7 +41,9 @@ export default function HeaderCard({ id, mediaType }: Props) {
   );
   const logoImg = useMemo(
     () =>
-      Utils.getImgUrl(data?.images.logos[0]?.file_path ?? "", { isLogo: true }),
+      Utils.getImgUrl(data?.images.logos[0]?.file_path ?? "", {
+        isSmaller: true,
+      }),
     [data?.images.logos],
   );
 

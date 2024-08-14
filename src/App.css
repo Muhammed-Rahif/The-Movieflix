@@ -16,7 +16,7 @@
 }
 
 *::selection {
-  @apply bg-white/20 text-white;
+  @apply bg-base-100 text-primary;
 }
 
 html,

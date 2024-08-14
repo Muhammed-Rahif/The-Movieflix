@@ -40,7 +40,7 @@ export type ImgSize =
 export class Utils {
   public static getImgUrl = (
     path: string,
-    { isLogo }: { isLogo?: boolean } = {},
+    { isSmaller }: { isSmaller?: boolean } = {},
   ) => {
     const windowWidth = window.innerWidth;
     const sizes: { [key: string]: number } = {
@@ -59,7 +59,7 @@ export class Utils {
     let size: ImgSize = "original";
 
     for (const [key, value] of Object.entries(sizes)) {
-      if (isLogo) {
+      if (isSmaller) {
         size = "w342";
         break;
       }

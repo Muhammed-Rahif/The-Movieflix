@@ -37,3 +37,8 @@ export enum OriginalLanguage {
   Ko = "ko",
   Zh = "zh",
 }
+
+export enum TimeWindow {
+  Day = "day",
+  Week = "week",
+}
