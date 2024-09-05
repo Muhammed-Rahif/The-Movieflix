@@ -11,6 +11,7 @@ import Layout from "./layout/Layout";
 import "./App.css";
 import { useAtomValue } from "jotai";
 import { tmdbSessionIdAtom } from "./states/auth";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   const sessionId = useAtomValue(tmdbSessionIdAtom);
@@ -18,7 +19,7 @@ function App() {
 
   useEffect(() => {
     // https://stackoverflow.com/a/69084017/14781260
-    CapacitorApp.addListener("backButton", ({ canGoBack }) => {
+    CapacitorApp.addListener("backButton", ({ canGoBack }) => { 
       if (!canGoBack) {
         CapacitorApp.exitApp();
       } else {
@@ -40,6 +41,13 @@ function App() {
             isLoggedIn ? <Profile /> : <Navigate to="/getting-started" />
           }
         />
+          <Route
+          path="search"
+          element={
+            isLoggedIn ? <SearchPage /> : <Navigate to="/getting-started" />
+          }
+        />
+         
         <Route
           path="getting-started"
           element={isLoggedIn ? <Navigate to="/" /> : <GettingStarted />}
@@ -49,6 +57,7 @@ function App() {
           element={isLoggedIn ? <Navigate to="/" /> : <Login />}
         />
         <Route path="/profile" element={<Profile />} />
+        <Route path="search" element={<SearchPage />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Route>
