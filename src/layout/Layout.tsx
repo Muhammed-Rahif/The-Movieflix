@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import BottomNavBar from "./BottomNavBar";
+// import BottomNavBar from "./BottomNavBar";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useMemo } from "react";
 import { tmdbSessionIdAtom } from "../states/auth";
@@ -29,7 +29,7 @@ export default function Layout() {
         </CSSTransition>
       </TransitionGroup>
 
-      {isLoggedIn && <BottomNavBar />}
+      {/* {isLoggedIn && <BottomNavBar />} */}
     </>
   );
 }

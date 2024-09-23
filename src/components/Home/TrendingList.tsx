@@ -67,15 +67,15 @@ export default function TrendingList() {
           ) => (
             <div
               key={i}
-              className="group relative flex aspect-3/4 h-40 cursor-pointer flex-col items-start justify-between overflow-clip rounded-xl border-2 border-transparent bg-accent bg-cover bg-center bg-no-repeat bg-origin-border px-2 py-1 pb-2 duration-500 hover:aspect-video hover:border-primary active:scale-95 active:border-primary md:h-44 lg:h-48"
+              className="group relative flex aspect-3/4 h-40 min-w-64 cursor-pointer flex-col items-start justify-between overflow-clip rounded-xl border-2 border-primary bg-accent bg-cover bg-center bg-no-repeat bg-origin-border px-2 py-1 pb-2 duration-500 hover:aspect-video active:scale-95 active:border-primary md:h-44 lg:h-48"
               style={{
                 backgroundImage: `url('${Utils.getImgUrl(backdrop_path ?? poster_path ?? "", { isSmaller: true })}')`,
               }}
               role="link"
             >
-              <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-black to-transparent opacity-0 duration-300 group-hover:opacity-100"></div>
+              <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-black to-transparent duration-300 group-hover:opacity-100"></div>
 
-              <div className="flex w-full items-start justify-between leading-3 opacity-0 duration-300 group-hover:opacity-100">
+              <div className="flex w-full items-start justify-between leading-3 duration-300 group-hover:opacity-100">
                 <p className="my-0 rounded bg-base-100/40 p-0.5 text-xs capitalize">
                   {media_type}
                 </p>
@@ -86,7 +86,7 @@ export default function TrendingList() {
                 </p>
               </div>
 
-              <div className="relative w-full opacity-0 duration-300 group-hover:to-transparent group-hover:opacity-100">
+              <div className="relative w-full duration-300 group-hover:to-transparent group-hover:opacity-100">
                 <h4 className="m-0 w-full truncate">
                   {original_title ?? original_name}
                 </h4>
