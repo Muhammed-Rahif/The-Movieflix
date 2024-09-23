@@ -6,4 +6,7 @@ export const tmdbSessionIdAtom = atomWithStorage(
   AppKeys.USER_SESSION_KEY,
   null,
   storage,
+  {
+    getOnInit: true,
+  },
 );

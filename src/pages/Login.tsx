@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import LogoText from "../components/LogoText";
 import { Authentication, LoginUserData } from "../api/authentication";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { useSetAtom } from "jotai";
 import { tmdbSessionIdAtom } from "../states/auth";
 
@@ -54,6 +54,14 @@ export default function Login() {
     createSession.reset();
   }, [createSession, login]);
 
+  const errorMsg = useMemo(
+    () =>
+      (login.error as any)?.response?.data?.status_message ||
+      (createSession.error as any)?.response?.data?.status_message ||
+      login.error,
+    [createSession.error, login.error],
+  );
+
   return (
     <div
       id="login"
@@ -79,10 +87,7 @@ export default function Login() {
             unmount: { maxHeight: "0rem" },
           }}
         >
-          <figcaption className="m-0">
-            {(login.error as any)?.response.data.status_message ||
-              (createSession.error as any)?.response.data.status_message}
-          </figcaption>
+          <figcaption className="m-0">{errorMsg}</figcaption>
         </Alert>
 
         <Input

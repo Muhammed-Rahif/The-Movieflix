@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const withMT = require("@material-tailwind/react/utils/withMT");
 const colors = require("tailwindcss/colors");
 
@@ -27,6 +29,7 @@ export default withMT({
       success: "#00ff00",
       warning: "#fde047",
       error: "#dc2626",
+      "red-500": "red",
     },
     fontFamily: {
       sans: ["Ubuntu", "sans-serif"],
@@ -34,6 +37,7 @@ export default withMT({
     extend: {
       aspectRatio: {
         "3/4": "3 / 4",
+        "7/8": "7 / 8",
       },
       // https://jackwhiting.co.uk/posts/creating-a-marquee-with-tailwind/
       animation: {
