@@ -7,13 +7,21 @@
   /* border: 1px solid red !important; */
 }
 
+* :focus-visible {
+  outline: red solid 3px;
+}
+
 *::-webkit-scrollbar {
   display: none; /* Safari and Chrome  hide scrollbar */
 }
 
+*::selection {
+  @apply bg-base-100 text-primary;
+}
+
 html,
 body {
-  @apply h-full w-full overflow-hidden bg-base-100;
+  @apply bg-base-100;
 }
 
 .page {

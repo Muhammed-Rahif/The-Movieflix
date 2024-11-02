@@ -36,5 +36,40 @@ export type ImgSize =
   | "w780"
   | "w1280"
   | "original";
-export const getImgUrl = (path: string, size: ImgSize) =>
-  `${imgBaseUrl}${size}${path}`;
+
+export class Utils {
+  public static getImgUrl = (
+    path: string,
+    { isSmaller }: { isSmaller?: boolean } = {},
+  ) => {
+    const windowWidth = window.innerWidth;
+    const sizes: { [key: string]: number } = {
+      // w45: 45,
+      // w92: 92,
+      // w154: 154,
+      // w185: 185,
+      // w300: 300,
+      // w342: 342,
+      // w500: 500,
+      w780: 780,
+      w1280: 1280,
+      original: Infinity,
+    };
+
+    let size: ImgSize = "original";
+
+    for (const [key, value] of Object.entries(sizes)) {
+      if (isSmaller) {
+        size = "w342";
+        break;
+      }
+
+      if (windowWidth <= value) {
+        size = key as ImgSize;
+        break;
+      }
+    }
+
+    return `${imgBaseUrl}${size}${path}`;
+  };
+}

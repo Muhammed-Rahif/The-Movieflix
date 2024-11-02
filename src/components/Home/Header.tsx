@@ -1,35 +1,61 @@
-import { Button } from "@material-tailwind/react";
+import HeaderCard from "./HeaderCard";
+import { useQuery } from "@tanstack/react-query";
+import { Trending } from "../../api/trending";
+import { useMemo, useState } from "react";
+import { useInterval } from "../../hooks/useInterval";
+import { MediaType } from "../../api/trending.d";
+import { IconButton } from "@material-tailwind/react";
 
-export default function Header() {
+function Header() {
+  const [activeIndx, setActiveIndx] = useState(0);
+  const { data: trendingAll } = useQuery({
+    queryKey: ["Trending.getAll"],
+    queryFn: () => Trending.getAll(),
+  });
+  const activeTrend = useMemo(
+    () => trendingAll?.results[activeIndx],
+    [activeIndx, trendingAll?.results],
+  );
+  useInterval(
+    () => setActiveIndx((activeIndx + 1) % (trendingAll?.results.length || 1)),
+    6000,
+  );
+
   return (
-    <article className="flex h-screen w-full flex-col items-start justify-center">
-      <h1 className="text-primary">Movieflix</h1>
-      <h4 className="underline decoration-primary underline-offset-8">
-        An app for movies/series.
-      </h4>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita
-        blanditiis in tempora quos voluptatibus ipsam non obcaecati dicta
-        excepturi quisquam, dolores, vitae unde quis optio, itaque ad
-        consequatur soluta natus.
-      </p>
-      <div className="grid grid-cols-2 gap-2">
-        <Button
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
+    <div className="relative left-0 h-[70vh] min-h-80 w-screen overflow-x-clip rounded-b-xl">
+      <HeaderCard
+        mediaType={activeTrend?.media_type ?? MediaType.Movie}
+        id={activeTrend?.id ?? 0}
+      />
+
+      <div className="absolute bottom-4 z-10 hidden w-full items-center justify-between px-5 md:flex">
+        <IconButton
+          onClick={() => setActiveIndx(activeIndx - 1)}
+          className="bg-accent"
         >
-          Explore
-        </Button>
-        <Button
-          className="bg-secondary"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
+          <i className="eva eva-arrow-ios-back text-3xl" />
+        </IconButton>
+        <IconButton
+          onClick={() => setActiveIndx(activeIndx + 1)}
+          className="bg-accent"
         >
-          Enjoy
-        </Button>
+          <i className="eva eva-arrow-ios-forward text-3xl" />
+        </IconButton>
       </div>
-    </article>
+
+      <div className="absolute bottom-2 left-1/2 z-50 flex w-full -translate-x-1/2 justify-center gap-2">
+        {[...Array(trendingAll?.results.length)].map((_, i) => (
+          <span
+            key={i}
+            className={`block h-[5px] w-[5px] cursor-pointer rounded-2xl transition-all duration-300 content-[''] first:scale-50 last:scale-50 ${
+              activeIndx === i ? "!scale-100 bg-primary" : "bg-white"
+            }`}
+            onClick={() => setActiveIndx(i)}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
+
+export default Header;

@@ -5,14 +5,17 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
 import Layout from "./layout/Layout";
 
 import "./App.css";
+import { useAtomValue } from "jotai";
+import { tmdbSessionIdAtom } from "./states/auth";
 
 function App() {
-  const isLoggedIn = true;
+  const sessionId = useAtomValue(tmdbSessionIdAtom);
+  const isLoggedIn = useMemo(() => typeof sessionId == "string", [sessionId]);
 
   useEffect(() => {
     // https://stackoverflow.com/a/69084017/14781260
@@ -44,6 +47,10 @@ function App() {
         }
       />
         <Route
+          path="/profile"
+          element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
+        />
+        <Route
           path="getting-started"
           element={isLoggedIn ? <Navigate to="/" /> : <GettingStarted />}
         />
@@ -51,7 +58,6 @@ function App() {
           path="login"
           element={isLoggedIn ? <Navigate to="/" /> : <Login />}
         />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Route>

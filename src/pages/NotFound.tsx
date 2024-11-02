@@ -18,12 +18,7 @@ function NotFound() {
         </p>
 
         <Link to="/">
-          <Button
-            className="bg-white font-semibold text-black"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
+          <Button className="bg-white font-semibold text-black">
             Movieflix Home
           </Button>
         </Link>

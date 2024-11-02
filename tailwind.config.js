@@ -7,6 +7,16 @@ export default withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   plugins: [require("@tailwindcss/typography")],
   theme: {
+    borderWidth: {
+      DEFAULT: "1px",
+      0: "0",
+      1: "1px",
+      2: "2px",
+      3: "3px",
+      4: "4px",
+      6: "6px",
+      8: "8px",
+    },
     colors: {
       ...colors,
       primary: "red",
@@ -18,11 +28,16 @@ export default withMT({
       success: "#00ff00",
       warning: "#fde047",
       error: "#dc2626",
+      "red-500": "red",
     },
     fontFamily: {
       sans: ["Ubuntu", "sans-serif"],
     },
     extend: {
+      aspectRatio: {
+        "3/4": "3 / 4",
+        "7/8": "7 / 8",
+      },
       // https://jackwhiting.co.uk/posts/creating-a-marquee-with-tailwind/
       animation: {
         marquee: "marquee 36s linear infinite",
@@ -40,11 +55,7 @@ export default withMT({
       },
       container: {
         padding: {
-          DEFAULT: "1rem",
-          sm: "2rem",
-          lg: "4rem",
-          xl: "5rem",
-          "2xl": "6rem",
+          DEFAULT: "0",
         },
       },
     },

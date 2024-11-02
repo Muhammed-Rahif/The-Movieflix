@@ -1,11 +1,11 @@
 export interface GetTrendingAllResponse {
   page: number;
-  results: Result[];
+  results: MovieData[];
   total_pages: number;
   total_results: number;
 }
 
-export interface Result {
+export interface MovieData {
   backdrop_path: string;
   id: number;
   name?: string;
@@ -36,4 +36,9 @@ export enum OriginalLanguage {
   En = "en",
   Ko = "ko",
   Zh = "zh",
+}
+
+export enum TimeWindow {
+  Day = "day",
+  Week = "week",
 }
