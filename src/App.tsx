@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import GettingStarted from "./pages/GettingStarted";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import Search from "./pages/Search";
 import Profile from "./pages/Profile";
 import { useEffect } from "react";
 import { App as CapacitorApp } from "@capacitor/app";
@@ -36,7 +37,12 @@ function App() {
           element={
             isLoggedIn ? <Profile /> : <Navigate to="/getting-started" />
           }
-        />
+        /><Route
+        path="search"
+        element={
+          isLoggedIn ? <Search /> : <Navigate to="/getting-started" />
+        }
+      />
         <Route
           path="getting-started"
           element={isLoggedIn ? <Navigate to="/" /> : <GettingStarted />}
