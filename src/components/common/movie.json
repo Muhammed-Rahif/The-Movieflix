@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Inception",
+    "poster": "https://image.tmdb.org/t/p/w500/8s4h9friP6Ci3adRGahHARVd76E.jpg",
+    "genre": "Science Fiction",
+    "year": 2010,
+    "rating": 8.8
+  },
+  {
+    "title": "The Dark Knight",
+    "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "genre": "Action, Crime",
+    "year": 2008,
+    "rating": 9.0
+  },
+  {
+    "title": "Interstellar",
+    "poster": "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+    "genre": "Adventure, Drama, Science Fiction",
+    "year": 2014,
+    "rating": 8.6
+  },
+  {
+    "title": "The Matrix",
+    "poster": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+    "genre": "Action, Science Fiction",
+    "year": 1999,
+    "rating": 8.7
+  },
+  {
+    "title": "Parasite",
+    "poster": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+    "genre": "Drama, Thriller",
+    "year": 2019,
+    "rating": 8.6
+  },
+  {
+    "title": "Inception",
+    "poster": "https://image.tmdb.org/t/p/w500/8s4h9friP6Ci3adRGahHARVd76E.jpg",
+    "genre": "Science Fiction",
+    "year": 2010,
+    "rating": 8.8
+  },
+  {
+    "title": "The Dark Knight",
+    "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "genre": "Action, Crime",
+    "year": 2008,
+    "rating": 9.0
+  },
+  {
+    "title": "Interstellar",
+    "poster": "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+    "genre": "Adventure, Drama, Science Fiction",
+    "year": 2014,
+    "rating": 8.6
+  },
+  {
+    "title": "The Matrix",
+    "poster": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+    "genre": "Action, Science Fiction",
+    "year": 1999,
+    "rating": 8.7
+  },
+  {
+    "title": "Parasite",
+    "poster": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+    "genre": "Drama, Thriller",
+    "year": 2019,
+    "rating": 8.6
+  }
+]
